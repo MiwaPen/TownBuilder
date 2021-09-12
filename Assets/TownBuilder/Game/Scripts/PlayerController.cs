@@ -1,18 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    [SerializeField] private GameObject blockSpawner;
+    [SerializeField] private GameObject blockPrefubs;
+    [SerializeField] private Transform parent;
+   
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            SpawnBlock();
+        }
+    }
+    private void SpawnBlock()
+    {
+        GameObject block = blockPrefubs;
+        Instantiate(block, blockSpawner.transform.position, new Quaternion(0,0,0,0),parent);
     }
 }
