@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject blockSpawner;
@@ -16,6 +15,6 @@ public class PlayerController : MonoBehaviour
     private void SpawnBlock()
     {
         GameObject block = blockPrefubs;
-        Instantiate(block, blockSpawner.transform.position, new Quaternion(0,0,0,0),parent);
+        Instantiate(block, blockSpawner.transform.position, new Quaternion(0,0,0,0));
     }
 }

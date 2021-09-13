@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class SpawnerRotationChanger : MonoBehaviour
 {
     private Rigidbody sphere;

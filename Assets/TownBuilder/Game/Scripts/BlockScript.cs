@@ -1,11 +1,13 @@
 using UnityEngine;
-
+using System;
 public class BlockScript : MonoBehaviour
 {
     private Rigidbody block;
-
+    private Transform parent;
+    public Action IncreesScore;
     private void Awake()
     {
+        parent = FindObjectOfType<ParentScript>().transform;
         block = this.GetComponent<Rigidbody>();
     }
 
@@ -25,7 +27,9 @@ public class BlockScript : MonoBehaviour
         float blockSize = block.gameObject.GetComponent<BoxCollider>().size.x;
         if (dist <= blockSize/3) 
         {
+            IncreesScore?.Invoke();
             block.isKinematic = true;
+            block.gameObject.transform.SetParent(parent);
         }
         else
         {
