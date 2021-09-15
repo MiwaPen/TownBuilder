@@ -1,10 +1,10 @@
 using UnityEngine;
-using System;
 public class BlockScript : MonoBehaviour
 {
+    [SerializeField] float DestroyDelay = 5; 
     private Rigidbody block;
     private Transform parent;
-    public Action IncreesScore;
+ 
     private void Awake()
     {
         parent = FindObjectOfType<ParentScript>().transform;
@@ -13,9 +13,12 @@ public class BlockScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag=="Block")
+        if (collision.gameObject.tag=="Block" || collision.gameObject.tag == "StartBlock")
         {
-            Clip(collision.transform);
+            if (block.isKinematic == false)
+            {
+                Clip(collision.transform);
+            }
         }
     }
 
@@ -25,16 +28,29 @@ public class BlockScript : MonoBehaviour
         Vector3 LastBlockXPos = new Vector3(lastblock.transform.position.x, 0f, 0f);
         float dist = Vector3.Distance(newBlockXPos, LastBlockXPos);
         float blockSize = block.gameObject.GetComponent<BoxCollider>().size.x;
-        if (dist <= blockSize/3) 
+        if (dist <= blockSize/2.5) 
         {
-            IncreesScore?.Invoke();
+            block.transform.position = new Vector3(block.transform.position.x, lastblock.position.y + blockSize, lastblock.position.z);
+            block.transform.Rotate(lastblock.rotation.eulerAngles);
             block.isKinematic = true;
             block.gameObject.transform.SetParent(parent);
         }
         else
         {
             Destroy(block.gameObject);
-            Destroy(lastblock.gameObject);
+            if (lastblock.gameObject.tag == "Block")
+            {
+                Destroy(lastblock.gameObject);
+            }
         }
+    }
+    public void DestroyBlockWithDelay()
+    {
+        Invoke("DestroyBlock", DestroyDelay);
+    }
+
+    private void DestroyBlock()
+    {
+        Destroy(this.gameObject);
     }
 }

@@ -8,11 +8,11 @@ public class GameManager : MonoBehaviour
     private int _playerCurrentScore;
     private void Awake()
     {
+        Application.targetFrameRate = 120;
+
         playerScore = repositoryBase.PlayerScore;
         _playerCurrentScore = playerScore._currentScore;
-
         playerScore.UpdateCurrentScoreInfo += UpdateCurrScore;
-
         parentScript.IncreesScore += UpdateReposCurrScore;
     }
 
