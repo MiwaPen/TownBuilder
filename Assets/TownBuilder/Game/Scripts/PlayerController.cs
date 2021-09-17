@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject blockPrefubs;
     [SerializeField] private Transform parent;
     [SerializeField] private float SpawnOffSetValue = 0;
-    private bool canSpawn = true;
+    private bool canSpawn = false;
     private Vector3 SpawnOffset;
     void Update()
     {
@@ -27,8 +27,13 @@ public class PlayerController : MonoBehaviour
         canSpawn = false;
     }
 
-    public void AccessSpawn()
+    public void AccessSpawnTrue()
     {
         canSpawn = true;
+    }
+
+    public void AccessSpawnFalse()
+    {
+        canSpawn = false;
     }
 }

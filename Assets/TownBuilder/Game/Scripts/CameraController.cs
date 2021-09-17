@@ -4,14 +4,17 @@ using Cinemachine;
 
 public class CameraController : MonoBehaviour
 {
-    public Action ChangeViewPoint;
-    [SerializeField] CinemachineVirtualCamera _camera1;
-    [SerializeField] CinemachineVirtualCamera _camera2;
-    [SerializeField] ParentScript parentScript;
+    [SerializeField] private CinemachineVirtualCamera _camera1;
+    [SerializeField] private CinemachineVirtualCamera _camera2;
+    [SerializeField] private ParentScript parentScript;
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private float _camera1PosY;
+    [SerializeField] private float _camera2PosY;
 
     private void Awake()
     {
         parentScript.MoveCamera += SwitchCamera;
+        gameManager.ResetSceneEvent += ResetCamPos;
         _camera1.Priority = 1;
         _camera2.Priority = 0;
     }
@@ -37,6 +40,14 @@ public class CameraController : MonoBehaviour
     private void UpSecondCam()
     {
         _camera2.transform.position = new Vector3(_camera1.transform.position.x, _camera1.transform.position.y + 4, _camera1.transform.position.z);
+    }
+
+    private void ResetCamPos()
+    {
+        _camera1.transform.position = new Vector3(_camera1.transform.position.x, _camera1PosY, _camera1.transform.position.z);
+        _camera2.transform.position = new Vector3(_camera2.transform.position.x, _camera2PosY, _camera2.transform.position.z);
+        _camera1.Priority = 1;
+        _camera2.Priority = 0;
     }
 
 }

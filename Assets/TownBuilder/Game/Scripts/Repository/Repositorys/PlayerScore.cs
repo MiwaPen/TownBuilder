@@ -11,7 +11,7 @@ public class PlayerScore
 
     public void Initialize()
     {
-        _currentScore = 0;
+        _currentScore = 1;
         _maxScore = PlayerPrefs.GetInt(maxScoreKey);
     }
 
@@ -26,7 +26,12 @@ public class PlayerScore
         if (currentResult > _maxScore)
         {
             PlayerPrefs.SetInt(maxScoreKey,currentResult);
+            UpdateReposMax();
             UpdateMaxScoreInfo?.Invoke();
         }
+    }
+    private void UpdateReposMax()
+    {
+        _maxScore = PlayerPrefs.GetInt(maxScoreKey); 
     }
 }

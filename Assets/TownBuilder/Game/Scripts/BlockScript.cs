@@ -1,7 +1,9 @@
 using UnityEngine;
 public class BlockScript : MonoBehaviour
 {
-    [SerializeField] float DestroyDelay = 5; 
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private float DestroyDelay = 5; 
     private Rigidbody block;
     private Transform parent;
  
@@ -24,6 +26,8 @@ public class BlockScript : MonoBehaviour
 
     private void Clip(Transform lastblock)
     {
+
+        playerController.AccessSpawnTrue();
         Vector3 newBlockXPos = new Vector3(block.transform.position.x, 0f, 0f);
         Vector3 LastBlockXPos = new Vector3(lastblock.transform.position.x, 0f, 0f);
         float dist = Vector3.Distance(newBlockXPos, LastBlockXPos);
@@ -37,11 +41,13 @@ public class BlockScript : MonoBehaviour
         }
         else
         {
+            gameManager.UpdateHP();
             Destroy(block.gameObject);
             if (lastblock.gameObject.tag == "Block")
             {
                 Destroy(lastblock.gameObject);
             }
+            
         }
     }
     public void DestroyBlockWithDelay()

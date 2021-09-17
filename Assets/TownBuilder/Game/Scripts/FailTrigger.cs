@@ -1,11 +1,10 @@
 using UnityEngine;
-using System;
 
 public class FailTrigger : MonoBehaviour
 {
-    [SerializeField] PlayerController playerController;
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private GameManager gameManager;
     private Transform ts;
-
 
     private void Awake()
     {
@@ -19,10 +18,10 @@ public class FailTrigger : MonoBehaviour
             Rigidbody rigidbody = other.gameObject.GetComponent<Rigidbody>();
             if (rigidbody.isKinematic==false)
             {
-                playerController.AccessSpawn();
+                playerController.AccessSpawnTrue();
                 other.gameObject.GetComponent<BoxCollider>().enabled = false;
-
                 other.gameObject.GetComponent<BlockScript>().DestroyBlockWithDelay();
+                gameManager.UpdateHP();
             }
         }
     }
