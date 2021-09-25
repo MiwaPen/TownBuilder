@@ -12,6 +12,7 @@ public class IngameUI : MonoBehaviour
         gameManager.OnHPChangeEvent += UpdateHP;
         gameManager.OnScoreChangeEvent += UpdateScore;
         gameManager.OnGameStart += SetStartInfo;
+        SetStartInfo();
     }
 
     private void SetStartInfo()

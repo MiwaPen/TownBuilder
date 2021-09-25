@@ -24,12 +24,12 @@ public class CameraController : MonoBehaviour
         if (_camera1.Priority > _camera2.Priority)
         {
             _camera2.Priority = _camera1.Priority+1;
-            Invoke("UpFirstCam", 1.2f);
+            Invoke("UpFirstCam", 1f);
         }
         else
         {
             _camera1.Priority = _camera2.Priority + 1;
-            Invoke("UpSecondCam", 1.2f);
+            Invoke("UpSecondCam", 1f);
         }
     }
 

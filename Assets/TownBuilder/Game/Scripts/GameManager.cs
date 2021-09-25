@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private RepositoryBase repositoryBase;
     [SerializeField] private ParentScript parentScript;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private AudioController audioController;
     [SerializeField] private int _MaxHP = 0;
     private int HP = 0;
     private PlayerScore playerScore;
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
         playerScore.UpdateCurrentScoreInfo += UpdateCurrScore;
         parentScript.IncreesScore += UpdateReposCurrScore;
         MainMenu();
+        audioController.Music();
     }
 
     public void Startgame()
@@ -37,10 +39,12 @@ public class GameManager : MonoBehaviour
         HP = _MaxHP;
         playerController.AccessSpawnTrue();
         OnGameStart?.Invoke();
+        audioController.Click();
     }
 
     public void MainMenu()
     {
+        audioController.Click();
         ResetScene();
         playerController.AccessSpawnFalse();
         HP = 0;
@@ -53,6 +57,7 @@ public class GameManager : MonoBehaviour
         SaveMaxScore(_playerCurrentScore);
         playerController.AccessSpawnFalse();
         OnLose?.Invoke();
+        audioController.endGame();
     }
 
     public void UpdateHP()
@@ -102,6 +107,7 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
+        audioController.Click();
         Application.Quit();
     }
 }

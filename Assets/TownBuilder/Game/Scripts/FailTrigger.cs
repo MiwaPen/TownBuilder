@@ -3,6 +3,7 @@ using UnityEngine;
 public class FailTrigger : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private AudioController audioController;
     [SerializeField] private GameManager gameManager;
     private Transform ts;
 
@@ -18,6 +19,7 @@ public class FailTrigger : MonoBehaviour
             Rigidbody rigidbody = other.gameObject.GetComponent<Rigidbody>();
             if (rigidbody.isKinematic==false)
             {
+                audioController.Fail();
                 playerController.AccessSpawnTrue();
                 other.gameObject.GetComponent<BoxCollider>().enabled = false;
                 other.gameObject.GetComponent<BlockScript>().DestroyBlockWithDelay();

@@ -14,6 +14,7 @@ public class MainMenuController : MonoBehaviour
         StartBTN.onClick.AddListener(gameManager.Startgame);
         ExitBTN.onClick.AddListener(gameManager.ExitGame);
         gameManager.MainMenuEvent += SetMaxScoreLabel;
+        SetMaxScoreLabel();
     }
 
     private void SetMaxScoreLabel()

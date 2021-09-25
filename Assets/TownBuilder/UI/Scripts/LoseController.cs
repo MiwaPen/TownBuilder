@@ -13,10 +13,11 @@ public class LoseController : MonoBehaviour
     {
         RetryBTN.onClick.AddListener(gameManager.Startgame);
         MenuBTN.onClick.AddListener(gameManager.MainMenu);
-        gameManager.OnLose += SetMaxScoreLabel;
+        gameManager.OnLose += SetScoreLabel;
+        SetScoreLabel();
     }
 
-    private void SetMaxScoreLabel()
+    private void SetScoreLabel()
     {
         int maxScore = gameManager.GetCurrScore();
         _currentScoreLabel.text = "Score:" + maxScore;
