@@ -39,12 +39,10 @@ public class GameManager : MonoBehaviour
         HP = _MaxHP;
         playerController.AccessSpawnTrue();
         OnGameStart?.Invoke();
-        audioController.Click();
     }
 
     public void MainMenu()
     {
-        audioController.Click();
         ResetScene();
         playerController.AccessSpawnFalse();
         HP = 0;
@@ -107,7 +105,6 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
-        audioController.Click();
         Application.Quit();
     }
 }

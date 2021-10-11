@@ -143,7 +143,7 @@ MonoBehaviour:
   playerController: {fileID: 142744727}
   audioController: {fileID: 232760994}
   gameManager: {fileID: 1258429421}
-  DestroyDelay: 5
+  DestroyDelay: 1
 --- !u!65 &16655000
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2478,7 +2478,7 @@ Transform:
   - {fileID: 33887924}
   m_Father: {fileID: 963194228}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 40}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30}
 --- !u!114 &880711401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4108,7 +4108,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d50e2b5dc1b28d343bd1ceda4996c6bc, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4827,6 +4827,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1258429421}
+    - target: {fileID: 997627965349311606, guid: 67ece6a5eb72e8b44b006d67582a80d8, type: 3}
+      propertyPath: audioController
+      value: 
+      objectReference: {fileID: 232760994}
     - target: {fileID: 997627965349311607, guid: 67ece6a5eb72e8b44b006d67582a80d8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4924,6 +4928,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1258429421}
+    - target: {fileID: 4274051941717884953, guid: 65c32b07c6dc878458a048218c329db4, type: 3}
+      propertyPath: audioController
+      value: 
+      objectReference: {fileID: 232760994}
     - target: {fileID: 4274051941717884954, guid: 65c32b07c6dc878458a048218c329db4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

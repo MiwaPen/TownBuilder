@@ -8,13 +8,26 @@ public class LoseController : MonoBehaviour
     [SerializeField] private Button MenuBTN;
     [SerializeField] private TMP_Text _currentScoreLabel;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private AudioController audioController;
 
     private void Awake()
     {
-        RetryBTN.onClick.AddListener(gameManager.Startgame);
-        MenuBTN.onClick.AddListener(gameManager.MainMenu);
+        RetryBTN.onClick.AddListener(StartBtnFunc);
+        MenuBTN.onClick.AddListener(BackToMain);
         gameManager.OnLose += SetScoreLabel;
         SetScoreLabel();
+    }
+
+    private void StartBtnFunc()
+    {
+        audioController.Click();
+        gameManager.Startgame();
+    }
+
+    private void BackToMain()
+    {
+        audioController.Click();
+        gameManager.MainMenu();
     }
 
     private void SetScoreLabel()
