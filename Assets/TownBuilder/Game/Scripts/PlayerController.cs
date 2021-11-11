@@ -1,11 +1,8 @@
 using UnityEngine;
-using System;
 public class PlayerController : MonoBehaviour
 {
-
     [SerializeField] private Transform blockSpawner;
-    [SerializeField] private GameObject blockPrefubs;
-    [SerializeField] private Transform parent;
+    [SerializeField] private GameObject blockPrefabs;
     [SerializeField] private float SpawnOffSetValue = 0;
     private bool canSpawn = false;
     private Vector3 SpawnOffset;
@@ -21,7 +18,7 @@ public class PlayerController : MonoBehaviour
     }
     private void SpawnBlock()
     {
-        GameObject block = blockPrefubs;
+        GameObject block = blockPrefabs;
         SpawnOffset = new Vector3(blockSpawner.position.x, blockSpawner.position.y - SpawnOffSetValue, blockSpawner.position.z);
         Instantiate(block, SpawnOffset, new Quaternion(0,0,0,0));
         canSpawn = false;
