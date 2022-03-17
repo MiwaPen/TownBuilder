@@ -7,8 +7,8 @@
 
 ---
 ## About
-+ Game genre: Arcade;
-+ Target plarfotm: Android 6+;
++ Game genre: Hyper-casual;
++ Target platfotm: Android 6+;
 
 > All models was created by using MagicaVoxel;
 
